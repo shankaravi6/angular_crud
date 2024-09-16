@@ -1,0 +1,63 @@
+<div class="container mt-4" >
+  <div class="d-flex justify-content-center mb-3">
+    <h2 class="text-danger">Angular Crud App</h2>
+  </div>
+    <div class="card p-3" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <h3 class="text-dark">Student Registation</h3>
+    
+    <form>
+        <div class="form-group">
+          <label>Student Name</label>
+          <input type="text" [(ngModel)]="stname" [ngModelOptions]="{standalone: true}" class="form-control" id="stname" placeholder="Enter Name">
+        </div>
+    
+        <div class="form-group">
+          <label>Course</label>
+          <input type="text" [(ngModel)]="course" [ngModelOptions]="{standalone: true}" class="form-control" id="course" placeholder="Enter Name">
+        </div>
+
+        <div class="form-group">
+            <label>Fee</label>
+            <input type="text" [(ngModel)]="fee" [ngModelOptions]="{standalone: true}" class="form-control" id="fee" placeholder="Enter Fee">
+          </div>
+
+
+    <div class="d-flex gap-3">
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Save</button>
+        <button type="submit" class="btn btn-warning mt-4" (click)="cancel()" >Cancel</button>
+      </div>
+       
+      </form>
+    </div>
+    
+  
+    
+        <div class="container mt-4" >
+            <h4>Student Table</h4>
+        <table class="table table-striped mt-3">
+            <thead class="thead-dark">
+             <h4 *ngIf="!isResultLoaded">Loading.................</h4>      
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Course</th>  
+                <th scope="col">Fee</th>  
+                <th scope="col">Actions</th> 
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let StudentItem of StudentArray">
+                <td>{{StudentItem.id  }}</td>
+                <td>{{StudentItem.stname }}</td>
+                <td>{{StudentItem.course }}</td>
+                <td>{{StudentItem.fee }}</td>
+                <td>
+                  <div class="d-flex gap-3">
+                  <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="setDelete(StudentItem)">Delete</button>   
+                </div>         
+                </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>
